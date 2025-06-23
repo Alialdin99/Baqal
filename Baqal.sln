@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.13.35919.96 d17.13
+VisualStudioVersion = 17.13.35919.96
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Baqal", "Baqal\Baqal.csproj", "{014CE41E-7D58-4EAA-A1B4-0533A1BA4DF7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Baqal.Api", "Baqal\Baqal.Api.csproj", "{014CE41E-7D58-4EAA-A1B4-0533A1BA4DF7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Baqal.Entities", "Baqal.Entities\Baqal.Entities.csproj", "{42BF6019-6410-4C1E-91DF-AF70E5AC7EBF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{014CE41E-7D58-4EAA-A1B4-0533A1BA4DF7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{014CE41E-7D58-4EAA-A1B4-0533A1BA4DF7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{014CE41E-7D58-4EAA-A1B4-0533A1BA4DF7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{42BF6019-6410-4C1E-91DF-AF70E5AC7EBF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{42BF6019-6410-4C1E-91DF-AF70E5AC7EBF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{42BF6019-6410-4C1E-91DF-AF70E5AC7EBF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{42BF6019-6410-4C1E-91DF-AF70E5AC7EBF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
