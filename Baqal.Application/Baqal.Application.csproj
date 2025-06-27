@@ -6,4 +6,11 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="ExtensionMethods\" />
+  </ItemGroup>
+<ItemGroup>
+	<ProjectReference Include="..\Baqal.DataAccess\Baqal.DataAccess.csproj" />
+</ItemGroup>
+
 </Project>
