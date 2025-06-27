@@ -7,10 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="ExtensionMethods\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Baqal.DataContext\Baqal.DataContext.csproj" />
   </ItemGroup>
 
