@@ -8,11 +8,11 @@ namespace Baqal.DataAccess.Interfaces
 {
     public interface IBaseRepository<T> where T : class
     {
-        Task<IEnumerable<T>> GetAllAsync();
-        Task<T> GetByIdAsync(int id);
         Task AddAsync(T entity);
+        Task<T> GetByIdAsync(Guid id);
+        Task<IEnumerable<T>> GetAllAsync();
         Task UpdateAsync(T entity);
-        Task DeleteAsync(int id);
+        Task DeleteAsync(Guid id);
 
     }
 }

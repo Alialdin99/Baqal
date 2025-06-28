@@ -16,7 +16,6 @@ namespace Baqal.DataAccess
             _context = context;
             Stores = new StoreRepository(_context);
             Products = new ProductRepository(_context);
-            
         }
 
         public async void Dispose(){
