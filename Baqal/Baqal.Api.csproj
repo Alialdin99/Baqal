@@ -19,8 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Baqal.DataContext\Baqal.DataContext.csproj" />
-    <ProjectReference Include="..\Baqal.Entities\Baqal.Entities.csproj" />
+	  <ProjectReference Include="..\Baqal.Application\Baqal.Application.csproj" />	  
   </ItemGroup>
 
 </Project>
