@@ -30,7 +30,6 @@ namespace Baqal.Application.Services
                 Description = addProductDTO.Description,
                 ImageUrl = addProductDTO.ImageUrl,
                 StoreId = addProductDTO.StoreId,
-                Store = addProductDTO.Store,
             };
 
             await _unitOfWork.Products.AddAsync(product);
@@ -45,15 +44,27 @@ namespace Baqal.Application.Services
                 Description = addProductDTO.Description,
                 ImageUrl = addProductDTO.ImageUrl,
                 StoreId = addProductDTO.StoreId,
-                Store = addProductDTO.Store,
             };
             return productDTO;
         }
 
-        public async Task<Product> GetByIdAsync(Guid id)
+        public async Task<ProductDTO> GetByIdAsync(Guid id)
         {
-            return await _unitOfWork.Products.GetByIdAsync(id);
+            var product = await _unitOfWork.Products.GetByIdAsync(id);
+            if (product == null) return null;
+
+            return new ProductDTO
+            {
+                Id = product.Id,
+                Name = product.Name,
+                Price = product.Price,
+                Unit = product.Unit,
+                Description = product.Description,
+                ImageUrl = product.ImageUrl,
+                StoreId = product.StoreId
+            };
         }
+
 
         public async Task<IEnumerable<Product>> GetAllAsync()
         {
