@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Baqal.DataContext.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250623123620_InitialCreate")]
+    [Migration("20250701130828_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -102,11 +102,9 @@ namespace Baqal.DataContext.Migrations
 
             modelBuilder.Entity("Baqal.Entities.Models.Product", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Description")
                         .IsRequired()
@@ -126,7 +124,7 @@ namespace Baqal.DataContext.Migrations
                     b.Property<Guid>("StoreId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<int>("unit")
+                    b.Property<int>("Unit")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -313,7 +311,7 @@ namespace Baqal.DataContext.Migrations
             modelBuilder.Entity("Baqal.Entities.Models.Product", b =>
                 {
                     b.HasOne("Baqal.Entities.Models.Store", "Store")
-                        .WithMany()
+                        .WithMany("Products")
                         .HasForeignKey("StoreId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -370,6 +368,11 @@ namespace Baqal.DataContext.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("Baqal.Entities.Models.Store", b =>
+                {
+                    b.Navigation("Products");
                 });
 #pragma warning restore 612, 618
         }

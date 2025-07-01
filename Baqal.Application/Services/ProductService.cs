@@ -96,7 +96,7 @@ namespace Baqal.Application.Services
                 Description = oldProduct.Description,
                 ImageUrl = oldProduct.ImageUrl,
                 StoreId = oldProduct.StoreId,
-                Store = oldProduct.Store,
+                //Store = oldProduct.Store,
             };
             return productDTO;
         }
