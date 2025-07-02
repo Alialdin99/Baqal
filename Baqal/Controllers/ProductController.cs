@@ -1,6 +1,5 @@
 ﻿using Baqal.Application.DTOs;
 using Baqal.Application.Services;
-using Baqal.Entities.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Baqal.Api.Controllers

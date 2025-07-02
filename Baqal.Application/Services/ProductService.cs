@@ -1,13 +1,6 @@
 ﻿using Baqal.Application.DTOs;
 using Baqal.DataAccess.Interfaces;
-using Baqal.Entities.Enums;
 using Baqal.Entities.Models;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Baqal.Application.Services
 {
@@ -96,7 +89,6 @@ namespace Baqal.Application.Services
                 Description = oldProduct.Description,
                 ImageUrl = oldProduct.ImageUrl,
                 StoreId = oldProduct.StoreId,
-                //Store = oldProduct.Store,
             };
             return productDTO;
         }
