@@ -11,11 +11,14 @@ namespace Baqal.DataAccess
         public IStoreRepository Stores { get; private set; }
         public IProductRepository Products { get; private set; }
 
+        public ICartRepository Carts { get; private set; }
+
         public UnitOfWork(AppDbContext context)
         {
             _context = context;
             Stores = new StoreRepository(_context);
             Products = new ProductRepository(_context);
+            Carts = new CartRepository(_context);
         }
 
         public async void Dispose(){

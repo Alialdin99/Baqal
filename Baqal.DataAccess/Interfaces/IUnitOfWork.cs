@@ -10,6 +10,7 @@ namespace Baqal.DataAccess.Interfaces
     {
         public IStoreRepository Stores { get; }
         public IProductRepository Products { get; }
+        public ICartRepository Carts { get; }
         void Dispose();
         Task<int> Save();
     }

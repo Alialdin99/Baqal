@@ -23,10 +23,12 @@ namespace Baqal.Application.Services
                 Description = addProductDTO.Description,
                 ImageUrl = addProductDTO.ImageUrl,
                 StoreId = addProductDTO.StoreId,
+
             };
 
             await _unitOfWork.Products.AddAsync(product);
             await _unitOfWork.Save();
+
 
             ProductDTO productDTO = new ProductDTO()
             {
