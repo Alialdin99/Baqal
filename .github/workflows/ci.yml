@@ -1,0 +1,43 @@
+name: Baqal PR Check
+
+on:
+  pull_request:
+    branches: [ main, develop ]  # Runs when you open a PR targeting these branches
+
+jobs:
+  verify-endpoints:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1️⃣ Checkout repo
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # 2️⃣ Setup .NET
+      - name: Setup .NET 8
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+
+      # 3️⃣ Restore and build
+      - name: Restore dependencies
+        run: dotnet restore
+
+      - name: Build solution
+        run: dotnet build --configuration Release --no-restore
+
+      # 4️⃣ Run the API in the background
+      - name: Start API
+        run: |
+          dotnet run --project Baqal.API/Baqal.API.csproj --urls "http://localhost:5000" &
+          sleep 10  # give it time to start up
+
+      # 5️⃣ Test Product endpoint
+      - name: Test Product GetAllAsync
+        run: |
+          curl -f http://localhost:5000/api/Product/GetAllAsync
+
+      # 6️⃣ Test Store endpoint
+      - name: Test Store GetAllAsync
+        run: |
+          curl -f http://localhost:5000/api/Store/GetAllAsync
