@@ -1,9 +1,7 @@
-﻿using System;
-using System.Threading.Tasks;
-
+﻿
 namespace Baqal.DataAccess.Interfaces 
 {
-    public interface IUnitOfWork: IDisposable, IAsyncDisposable
+    public interface IUnitOfWork : IDisposable, IAsyncDisposable
     {
         public IStoreRepository Stores { get; }
         public IProductRepository Products { get; }
@@ -14,5 +12,6 @@ namespace Baqal.DataAccess.Interfaces
 
         Task BeginTransactionAsync();
         Task CommitTransactionAsync();
-        Task RollbackAsync();    }
+        Task RollbackAsync();
+    }
 }

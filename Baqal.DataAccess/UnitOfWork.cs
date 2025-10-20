@@ -14,7 +14,7 @@ namespace Baqal.DataAccess
         private IDbContextTransaction? _transaction;
         private IStoreRepository? _stores;
         private IProductRepository _products;
-        //private ICartRepository? _carts;
+        private ICartRepository? _carts;
 
         private bool _disposed = false;
 
@@ -73,7 +73,7 @@ namespace Baqal.DataAccess
                 await RollbackAsync();
                 throw;
             }
-            finally 
+            finally
             {
                 await _transaction.DisposeAsync();
                 _transaction = null;
@@ -100,7 +100,7 @@ namespace Baqal.DataAccess
         {
             if (!_disposed)
             {
-                if(_transaction != null)
+                if (_transaction != null)
                     await _transaction.DisposeAsync();
 
                 await _context.DisposeAsync();
