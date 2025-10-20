@@ -16,5 +16,6 @@ namespace Baqal.Application.DTOs
         public UnitType Unit { get; set; }
         public string Description { get; set; }
         public string ImageUrl { get; set; }
+        public int StockQuantity { get; set; }
     }
 }

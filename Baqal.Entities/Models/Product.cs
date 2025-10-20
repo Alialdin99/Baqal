@@ -14,5 +14,7 @@ namespace Baqal.Entities.Models
         public string ImageUrl { get; set; }
         public Guid StoreId { get; set; }
 
+        public int StockQuantity { get; set; }
+
     }
 }

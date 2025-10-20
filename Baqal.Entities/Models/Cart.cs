@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Baqal.Entities.Models
+﻿namespace Baqal.Entities.Models
 {
     public class Cart
     {
@@ -14,5 +8,7 @@ namespace Baqal.Entities.Models
         public string? SessionId { get; set; } // For guests
         public ICollection<CartItem> Items { get; set; } = new List<CartItem>();
 
+        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+        public DateTime UpdatedAt { get; set; } = DateTime.UtcNow;
     }
 }

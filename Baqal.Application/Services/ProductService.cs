@@ -23,6 +23,7 @@ namespace Baqal.Application.Services
                 Description = addProductDTO.Description,
                 ImageUrl = addProductDTO.ImageUrl,
                 StoreId = addProductDTO.StoreId,
+                StockQuantity = addProductDTO.StockQuantity
 
             };
 
@@ -39,6 +40,7 @@ namespace Baqal.Application.Services
                 Description = addProductDTO.Description,
                 ImageUrl = addProductDTO.ImageUrl,
                 StoreId = addProductDTO.StoreId,
+                StockQuantity = addProductDTO.StockQuantity
             };
             return productDTO;
         }
@@ -56,7 +58,8 @@ namespace Baqal.Application.Services
                 Unit = product.Unit,
                 Description = product.Description,
                 ImageUrl = product.ImageUrl,
-                StoreId = product.StoreId
+                StoreId = product.StoreId,
+                StockQuantity = product.StockQuantity
             };
         }
 
@@ -78,6 +81,7 @@ namespace Baqal.Application.Services
             oldProduct.Unit = updateProductDTO.Unit;
             oldProduct.Description = updateProductDTO.Description;
             oldProduct.ImageUrl = updateProductDTO.ImageUrl;
+            oldProduct.StockQuantity = updateProductDTO.StockQuantity;
 
             await _unitOfWork.Products.UpdateAsync(oldProduct);
             await _unitOfWork.Save();
@@ -91,6 +95,7 @@ namespace Baqal.Application.Services
                 Description = oldProduct.Description,
                 ImageUrl = oldProduct.ImageUrl,
                 StoreId = oldProduct.StoreId,
+                StockQuantity = oldProduct.StockQuantity
             };
             return productDTO;
         }

@@ -1,11 +1,4 @@
 ﻿using Baqal.Entities.Enums;
-using Baqal.Entities.Models;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Baqal.Application.DTOs
 {
@@ -19,6 +12,8 @@ namespace Baqal.Application.DTOs
         public string Description { get; set; }
         public string ImageUrl { get; set; }
         public Guid StoreId { get; set; }
-        //public Store Store { get; set; }
+
+        public int StockQuantity { get; set; }
+
     }
 }

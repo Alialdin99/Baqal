@@ -11,7 +11,8 @@ namespace Baqal.Api.Controllers
     {
         private readonly ProductService _productService;
 
-        public ProductController(ProductService productService) {
+        public ProductController(ProductService productService)
+        {
             _productService = productService;
         }
 
@@ -33,7 +34,7 @@ namespace Baqal.Api.Controllers
         {
             var product = await _productService.GetByIdAsync(id);
 
-            if(product == null)
+            if (product == null)
             {
                 return NotFound("Product Not Found.");
             }
@@ -48,7 +49,7 @@ namespace Baqal.Api.Controllers
         }
 
         [HttpPut("UpdateProduct")]
-        public  async Task<IActionResult> UpdateProduct(Guid id,UpdateProductDTO updateProductDTO)
+        public async Task<IActionResult> UpdateProduct(Guid id, UpdateProductDTO updateProductDTO)
         {
             var result = await _productService.UpdateAsync(id, updateProductDTO);
             if (result == null)

@@ -4,14 +4,20 @@ namespace Baqal.DataAccess.Interfaces
 {
     public interface ICartRepository
     {
+        // Getters
         Task<Cart?> GetCartByUserIdAsync(string userId);
         Task<Cart?> GetCartBySessionIdAsync(string sessionId);
 
-        Task AddItemAsync(string userId, string productId, int quantity);
-        Task RemoveItemAsync(string userId, string productId);
-        Task UpdateQuantityAsync(string userId, string productId, int quantity);
+        // Item operations support BOTH userId and sessionId
+        Task<Cart> AddItemAsync(string? userId, string? sessionId, Guid productId, int quantity);
+        Task RemoveItemAsync(string? userId, string? sessionId, Guid productId);
+        Task UpdateQuantityAsync(string? userId, string? sessionId, Guid productId, int quantity);
+        Task ClearCartAsync(string? userId, string? sessionId);
 
-        Task ClearCartAsync(string userId);
-        Task SaveChangesAsync();
+        // Merge guest cart into user cart when user logs in
+        Task MergeCartsAsync(string sessionId, string userId);
+
+        // Cleanup old guest carts (run as background job)
+        Task DeleteOldGuestCartsAsync(int daysOld = 7);
     }
 }
