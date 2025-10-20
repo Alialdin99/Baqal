@@ -16,7 +16,7 @@ namespace Baqal.Api.Controllers
         }
 
         [HttpPost("AddStore")]
-        public async Task<IActionResult> AddStore(AddStoreDTO addStoreDTO)
+        public async Task<IActionResult> AddStore([FromBody] AddStoreDTO addStoreDTO)
         {
             if (addStoreDTO == null)
             {
@@ -28,7 +28,7 @@ namespace Baqal.Api.Controllers
         }
 
         [HttpGet("GetStore/{id}")]
-        public async Task<IActionResult> GetStoreAsync(Guid id)
+        public async Task<IActionResult> GetStoreAsync([FromQuery] Guid id)
         {
             var store = await _storeService.GetByIdAsync(id);
 
@@ -48,7 +48,9 @@ namespace Baqal.Api.Controllers
         }
 
         [HttpPut("UpdateStore")]
-        public async Task<IActionResult> UpdateStore(Guid id, UpdateStoreDTO updateStoreDTO)
+        public async Task<IActionResult> UpdateStore(
+            [FromQuery] Guid id,
+            [FromBody] UpdateStoreDTO updateStoreDTO)
         {
             var result = await _storeService.UpdateAsync(id, updateStoreDTO);
             if (result == null)
@@ -60,7 +62,7 @@ namespace Baqal.Api.Controllers
         }
 
         [HttpDelete("DeleteStore")]
-        public async Task<IActionResult> DeleteStore(Guid id)
+        public async Task<IActionResult> DeleteStore([FromQuery] Guid id)
         {
             var result = await _storeService.DeleteAsync(id);
             if (!result)

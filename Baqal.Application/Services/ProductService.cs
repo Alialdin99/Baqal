@@ -28,7 +28,7 @@ namespace Baqal.Application.Services
             };
 
             await _unitOfWork.Products.AddAsync(product);
-            await _unitOfWork.Save();
+            await _unitOfWork.SaveAsync();
 
 
             ProductDTO productDTO = new ProductDTO()
@@ -83,8 +83,8 @@ namespace Baqal.Application.Services
             oldProduct.ImageUrl = updateProductDTO.ImageUrl;
             oldProduct.StockQuantity = updateProductDTO.StockQuantity;
 
-            await _unitOfWork.Products.UpdateAsync(oldProduct);
-            await _unitOfWork.Save();
+            _unitOfWork.Products.UpdateAsync(oldProduct);
+            await _unitOfWork.SaveAsync();
 
             ProductDTO productDTO= new ProductDTO()
             {
@@ -107,8 +107,8 @@ namespace Baqal.Application.Services
             if (product == null)
                 return false;
 
-            await _unitOfWork.Products.DeleteAsync(id);
-            await _unitOfWork.Save();
+             _unitOfWork.Products.DeleteAsync(id);
+            await _unitOfWork.SaveAsync();
             return true;
         }
     }

@@ -17,7 +17,7 @@ namespace Baqal.Api.Controllers
         }
 
         [HttpPost("AddProduct")]
-        public async Task<IActionResult> AddProduct(AddProductDTO addProductDTO)
+        public async Task<IActionResult> AddProduct([FromBody] AddProductDTO addProductDTO)
         {
             if (addProductDTO == null)
             {
@@ -30,7 +30,7 @@ namespace Baqal.Api.Controllers
         }
 
         [HttpGet("GetProduct/{id}")]
-        public async Task<IActionResult> GetProductAsync(Guid id)
+        public async Task<IActionResult> GetProductAsync([FromQuery] Guid id)
         {
             var product = await _productService.GetByIdAsync(id);
 
@@ -49,7 +49,9 @@ namespace Baqal.Api.Controllers
         }
 
         [HttpPut("UpdateProduct")]
-        public async Task<IActionResult> UpdateProduct(Guid id, UpdateProductDTO updateProductDTO)
+        public  async Task<IActionResult> UpdateProduct(
+            [FromQuery] Guid id,
+            [FromBody] UpdateProductDTO updateProductDTO)
         {
             var result = await _productService.UpdateAsync(id, updateProductDTO);
             if (result == null)
@@ -60,7 +62,7 @@ namespace Baqal.Api.Controllers
         }
 
         [HttpDelete("DeleteProduct")]
-        public async Task<IActionResult> DeleteProduct(Guid id)
+        public async Task<IActionResult> DeleteProduct([FromQuery] Guid id)
         {
             var result = await _productService.DeleteAsync(id);
             if (!result)
