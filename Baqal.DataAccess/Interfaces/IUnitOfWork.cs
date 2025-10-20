@@ -12,7 +12,5 @@ namespace Baqal.DataAccess.Interfaces
 
         Task BeginTransactionAsync();
         Task CommitTransactionAsync();
-        Task RollbackAsync();
-    }
+        Task RollbackAsync();    }
 }
-
