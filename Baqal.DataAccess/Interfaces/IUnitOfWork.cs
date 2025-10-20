@@ -1,16 +1,18 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
-namespace Baqal.DataAccess.Interfaces
+namespace Baqal.DataAccess.Interfaces 
 {
-    public interface IUnitOfWork
+    public interface IUnitOfWork: IDisposable, IAsyncDisposable
     {
         public IStoreRepository Stores { get; }
         public IProductRepository Products { get; }
-        void Dispose();
-        Task<int> Save();
-    }
+        //public ICartRepository Carts {  get; }
+
+        Task<int> SaveAsync();
+        int Save();
+
+        Task BeginTransactionAsync();
+        Task CommitTransactionAsync();
+        Task RollbackAsync();    }
 }

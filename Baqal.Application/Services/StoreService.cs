@@ -34,7 +34,7 @@ namespace Baqal.Application.Services
             
 
             await _unitOfWork.Stores.AddAsync(store);
-            await _unitOfWork.Save();
+            await _unitOfWork.SaveAsync();
             return storeDTO;
         }
         
@@ -61,7 +61,7 @@ namespace Baqal.Application.Services
             oldStore.Governorate = updateStoreDTO.Governorate;
             
             await _unitOfWork.Stores.UpdateAsync(oldStore);
-            await _unitOfWork.Save();
+            await _unitOfWork.SaveAsync();
 
             StoreDTO storeDTO = new StoreDTO()
             {
@@ -82,7 +82,7 @@ namespace Baqal.Application.Services
                 return false;
 
             await _unitOfWork.Stores.DeleteAsync(id);
-            await _unitOfWork.Save();
+            await _unitOfWork.SaveAsync();
             return true;
         }
     }
