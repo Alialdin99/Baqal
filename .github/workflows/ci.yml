@@ -9,35 +9,35 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # 1️⃣ Checkout repo
+      # Checkout repo
       - name: Checkout code
         uses: actions/checkout@v4
 
-      # 2️⃣ Setup .NET
+      # Setup .NET
       - name: Setup .NET 8
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: 8.0.x
 
-      # 3️⃣ Restore and build
+      # Restore and build
       - name: Restore dependencies
         run: dotnet restore
 
       - name: Build solution
         run: dotnet build --configuration Release --no-restore
 
-      # 4️⃣ Run the API in the background
+      # Run the API in the background
       - name: Start API
         run: |
-          dotnet run --project Baqal.API/Baqal.API.csproj --urls "http://localhost:5000" &
+          dotnet run --project Baqal.API/Baqal.API.csproj --urls "http://localhost:44375" &
           sleep 10  # give it time to start up
 
-      # 5️⃣ Test Product endpoint
+      # Test Product endpoint
       - name: Test Product GetAllAsync
         run: |
-          curl -f http://localhost:5000/api/Product/GetAllAsync
+          curl -f http://localhost:44375/api/Product/GettAllProducts
 
-      # 6️⃣ Test Store endpoint
+      # Test Store endpoint
       - name: Test Store GetAllAsync
         run: |
-          curl -f http://localhost:5000/api/Store/GetAllAsync
+          curl -f http://localhost:44375/api/Store/GetAllStores
