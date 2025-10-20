@@ -18,6 +18,8 @@ namespace Baqal.DataAccess
 
         private bool _disposed = false;
 
+        public ICartRepository Carts { get; private set; }
+
         public UnitOfWork(AppDbContext context)
         {
             _context = context ?? throw new ArgumentNullException(nameof(context));
