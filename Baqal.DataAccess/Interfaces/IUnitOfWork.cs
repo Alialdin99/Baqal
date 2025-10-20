@@ -5,7 +5,8 @@ namespace Baqal.DataAccess.Interfaces
     {
         public IStoreRepository Stores { get; }
         public IProductRepository Products { get; }
-        //public ICartRepository Carts {  get; }
+
+        public ICartRepository Carts {  get; }
 
         Task<int> SaveAsync();
         int Save();

@@ -18,15 +18,15 @@ namespace Baqal.DataAccess
 
         private bool _disposed = false;
 
-        public ICartRepository Carts { get; private set; }
 
         public UnitOfWork(AppDbContext context)
         {
             _context = context ?? throw new ArgumentNullException(nameof(context));
+
         }
         public IStoreRepository Stores => _stores ??= new StoreRepository(_context);
         public IProductRepository Products => _products ??= new ProductRepository(_context);
-        //public ICartRepository Carts => _carts ??= new CartRepository(_context);
+        public ICartRepository Carts => _carts ??= new CartRepository(_context);
 
         public async Task<int> SaveAsync()
         {
