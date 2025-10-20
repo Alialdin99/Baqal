@@ -15,3 +15,4 @@ namespace Baqal.DataAccess.Interfaces
         Task RollbackAsync();
     }
 }
+

@@ -9,6 +9,7 @@ namespace Baqal.Application.ExtensionMethods
         public static IServiceCollection AddService(this IServiceCollection service)
             => service
                 .AddScoped<StoreService>()
-                .AddScoped<ProductService>();
+                .AddScoped<ProductService>()
+                .AddScoped<CartService>();
     }
 }

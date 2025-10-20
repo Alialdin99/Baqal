@@ -1,4 +1,5 @@
 ﻿using Baqal.Entities.Enums;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Baqal.Entities.Models
 {
@@ -6,12 +7,14 @@ namespace Baqal.Entities.Models
     {
         public Guid Id { get; set; }
         public string Name {  get; set; }
-        public int Price { get; set; }
+        [Column(TypeName = "decimal(18,2)")]
+        public double Price { get; set; }
         public UnitType Unit { get; set; }
         public string Description { get; set; }
         public string ImageUrl { get; set; }
         public Guid StoreId { get; set; }
-        public Store Store { get; set; }
+
+        public int StockQuantity { get; set; }
 
     }
 }
