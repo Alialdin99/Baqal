@@ -1,4 +1,4 @@
-name: Baqal PR Check
+name: Baqal commit Check
 
 on:
   push:
@@ -26,18 +26,20 @@ jobs:
       - name: Build solution
         run: dotnet build --configuration Release --no-restore
 
-      # Run the API in the background
+      - name: Publish API
+        run: dotnet publish Baqal/Baqal.API.csproj -c Release -o ./publish
+
       - name: Start API
         run: |
-          dotnet run --project Baqal/Baqal.API.csproj --urls "http://0.0.0.0:5000" &
-          sleep 10  # give it time to start up
+          dotnet ./publish/Baqal.API.dll --urls "http://0.0.0.0:5000" &
+          sleep 10
 
       # Test Product endpoint
       - name: Test Product GetAllAsync
         run: |
-          curl -f http://0.0.0.0:5000/api/Product/GettAllProducts
+          curl -f http://localhost:5000/api/Product/GettAllProducts
 
       # Test Store endpoint
       - name: Test Store GetAllAsync
         run: |
-          curl -f http://0.0.0.0:5000/api/Store/GetAllStores
+          curl -f http://localhost:5000/api/Store/GetAllStores
