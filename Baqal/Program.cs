@@ -26,9 +26,18 @@ builder.Services.AddIdentity<AppUser, IdentityRole>()
     .AddEntityFrameworkStores<AppDbContext>()
     .AddDefaultTokenProviders();
 
-// Database
+
+#if CI
+builder.Services.AddDbContext<AppDbContext>(options =>
+    options.UseInMemoryDatabase("TestDb"));
+#else
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+#endif
+
+// // Database
+// builder.Services.AddDbContext<AppDbContext>(options =>
+//     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 // Add Session + Memory Cache
 builder.Services.AddDistributedMemoryCache();

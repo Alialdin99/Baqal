@@ -42,7 +42,7 @@ namespace Baqal.Api.Controllers
         }
 
         [HttpGet("GetAllProducts")]
-        public async Task<IActionResult> GettAllProducts()
+        public async Task<IActionResult> GetAllProducts()
         {
             var products = await _productService.GetAllAsync();
             return Ok(products);
