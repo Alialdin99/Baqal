@@ -1,8 +1,8 @@
 name: Baqal PR Check
 
 on:
-  pull_request:
-    branches: [ main, develop ]  # Runs when you open a PR targeting these branches
+  push:
+    branches: [ main, Ali ]  # Runs when you open a PR targeting these branches
 
 jobs:
   verify-endpoints:
@@ -29,15 +29,15 @@ jobs:
       # Run the API in the background
       - name: Start API
         run: |
-          dotnet run --project Baqal.API/Baqal.API.csproj --urls "http://localhost:44375" &
+          dotnet run --project Baqal.API/Baqal.API.csproj --urls "http://localhost:5000" &
           sleep 10  # give it time to start up
 
       # Test Product endpoint
       - name: Test Product GetAllAsync
         run: |
-          curl -f http://localhost:44375/api/Product/GettAllProducts
+          curl -f http://localhost:5000/api/Product/GettAllProducts
 
       # Test Store endpoint
       - name: Test Store GetAllAsync
         run: |
-          curl -f http://localhost:44375/api/Store/GetAllStores
+          curl -f http://localhost:5000/api/Store/GetAllStores
