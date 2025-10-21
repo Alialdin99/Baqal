@@ -32,12 +32,12 @@ jobs:
       - name: Start API
         run: |
           dotnet ./publish/Baqal.Api.dll --urls "http://0.0.0.0:5000" &
-          sleep 10
+          sleep 15
 
       # Test Product endpoint
       - name: Test Product GetAllAsync
         run: |
-          curl -f http://localhost:5000/api/Product/GettAllProducts
+          curl -f http://localhost:5000/api/Product/GetAllProducts
 
       # Test Store endpoint
       - name: Test Store GetAllAsync
