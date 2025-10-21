@@ -31,8 +31,10 @@ jobs:
 
       - name: Start API
         run: |
-          dotnet ./publish/Baqal.Api.dll --urls "http://0.0.0.0:5000" &
+          dotnet ./publish/Baqal.Api.dll --urls "http://0.0.0.0:5000" api.log 2>&1 &
           sleep 15
+      - name: Show logs
+        run: cat api.log
 
       # Test Product endpoint
       - name: Test Product GetAllAsync
