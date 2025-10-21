@@ -9,6 +9,7 @@ using Baqal.DataAccess;
 
 
 
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -26,9 +27,18 @@ builder.Services.AddIdentity<AppUser, IdentityRole>()
     .AddEntityFrameworkStores<AppDbContext>()
     .AddDefaultTokenProviders();
 
-// Database
+
+#if CI
+builder.Services.AddDbContext<AppDbContext>(options =>
+    options.UseInMemoryDatabase("TestDb"));
+#else
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+#endif
+
+// // Database
+// builder.Services.AddDbContext<AppDbContext>(options =>
+//     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 // Add Session + Memory Cache
 builder.Services.AddDistributedMemoryCache();
@@ -44,6 +54,8 @@ builder.Services.AddHttpContextAccessor();
 
 
 var app = builder.Build();
+
+
 
 // Configure HTTP request pipeline
 if (app.Environment.IsDevelopment())
